@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administrasi Sistem Jaringan (ASJ)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Background animasi jaringan */
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+    }
+
+    .section {
+      max-width: 900px;
+      margin: 80px auto;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px 40px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.3);
+      animation: fadeIn 1s ease;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 25px;
+      color: #5ac8fa;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      flex: 1;
+      min-width: 120px;
+      text-align: center;
+      background: rgba(255,255,255,0.15);
+      padding: 10px 5px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .tab:hover {
+      background: rgba(255,255,255,0.25);
+      transform: scale(1.05);
+    }
+
+    .tab.active {
+      background: #5ac8fa;
+      color: #0f2027;
+      font-weight: 600;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.7s ease;
+      line-height: 1.7;
+      text-align: justify;
+      margin-top: 10px;
+    }
+
+    .tab-content h3 {
+      color: #5ac8fa;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .tab-content ul {
+      list-style: disc;
+      margin-left: 25px;
+    }
+
+    a.back {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 10px 20px;
+      color: #fff;
+      border: 1px solid #5ac8fa;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    a.back:hover {
+      background: #5ac8fa;
+      color: #0f2027;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="networkCanvas"></canvas>
+
+  <div class="section">
+    <h1>Administrasi Sistem Jaringan (ASJ)</h1>
+
+    <div class="tabs">
+      <div class="tab active" data-target="pengertian">Pengertian</div>
+      <div class="tab" data-target="fungsi">Fungsi</div>
+      <div class="tab" data-target="sejarah">Sejarah</div>
+      <div class="tab" data-target="komponen">Komponen</div>
+      <div class="tab" data-target="penerapan">Penerapan</div>
+      <div class="tab" data-target="kesimpulan">Kesimpulan</div>
+    </div>
+
+    <div class="content">
+      <div id="pengertian" class="tab-content" style="display:block;">
+        <h3>Pengertian Administrasi Sistem Jaringan</h3>
+        <p>
+          Administrasi Sistem Jaringan (ASJ) merupakan serangkaian kegiatan untuk mengatur, memelihara, dan mengamankan sistem jaringan komputer agar berfungsi optimal. 
+          Tugas utama administrator jaringan adalah memastikan seluruh perangkat saling terhubung dengan aman dan efisien, serta mengelola sumber daya digital yang digunakan dalam jaringan.
+        </p>
+        <p>
+          Dalam dunia pendidikan maupun industri, administrasi sistem jaringan menjadi fondasi penting bagi keberlangsungan layanan TI, seperti server data, website, aplikasi, maupun sistem komunikasi internal.
+        </p>
+      </div>
+
+      <div id="fungsi" class="tab-content">
+        <h3>Fungsi Administrasi Sistem Jaringan</h3>
+        <ul>
+          <li>Mengelola kinerja jaringan agar stabil dan optimal.</li>
+          <li>Mengatur hak akses pengguna sesuai kebijakan keamanan.</li>
+          <li>Menangani permasalahan teknis seperti koneksi atau konfigurasi server.</li>
+          <li>Menjaga sistem dari ancaman siber dan akses tidak sah.</li>
+          <li>Memonitor aktivitas jaringan untuk deteksi dini gangguan.</li>
+          <li>Membuat sistem cadangan data (backup) secara berkala.</li>
+        </ul>
+      </div>
+
+      <div id="sejarah" class="tab-content">
+        <h3>Sejarah Singkat</h3>
+        <p>
+          Konsep administrasi jaringan lahir pada era 1960-an bersamaan dengan munculnya ARPANET, cikal bakal internet. 
+          Pengelolaan sistem kala itu masih manual, hingga kemudian pada tahun 1990-an, sistem operasi jaringan seperti UNIX, Linux, dan Windows Server memperkenalkan konsep multi-user dan keamanan berbasis hak akses.
+        </p>
+        <p>
+          Seiring kemajuan teknologi, profesi administrator jaringan menjadi krusial untuk menjaga performa, kestabilan, dan keamanan infrastruktur digital organisasi.
+        </p>
+      </div>
+
+      <div id="komponen" class="tab-content">
+        <h3>Komponen Utama</h3>
+        <ul>
+          <li><b>Server:</b> Menyediakan layanan dan sumber daya jaringan.</li>
+          <li><b>Client:</b> Perangkat pengguna yang mengakses server.</li>
+          <li><b>Perangkat Jaringan:</b> Router, switch, dan access point.</li>
+          <li><b>Sistem Operasi Jaringan:</b> Windows Server, Linux, macOS Server.</li>
+          <li><b>Administrator:</b> Pengelola dan pengaman jaringan.</li>
+        </ul>
+      </div>
+
+      <div id="penerapan" class="tab-content">
+        <h3>Penerapan ASJ</h3>
+        <p>
+          Administrasi jaringan diterapkan di berbagai bidang: sekolah, kantor, hingga pusat data. 
+          Administrator bertugas mengatur koneksi antarperangkat, memantau keamanan, serta memastikan layanan seperti e-learning, website, dan database dapat berjalan lancar.
+        </p>
+      </div>
+
+      <div id="kesimpulan" class="tab-content">
+        <h3>Kesimpulan</h3>
+        <p>
+          Administrasi Sistem Jaringan adalah pilar utama dalam dunia teknologi informasi. 
+          Tanpa administrasi yang baik, sistem dapat mengalami gangguan, kebocoran data, atau bahkan berhenti beroperasi. 
+          Oleh karena itu, keahlian dalam bidang ini sangat dibutuhkan untuk mendukung keberlanjutan sistem jaringan yang handal dan aman.
+        </p>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <a href="index.html" class="back">← Kembali ke Beranda</a>
+    </div>
+  </div>
+
+  <script>
+    // Tab navigation
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        contents.forEach(c => c.style.display = 'none');
+        document.getElementById(tab.dataset.target).style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Animasi jaringan
+    const canvas = document.getElementById('networkCanvas');
+    const ctx = canvas.getContext('2d');
+    let w, h, particles;
+    function init() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+      particles = Array.from({ length: 70 }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.7,
+        vy: (Math.random() - 0.5) * 0.7
+      }));
+    }
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = 'rgba(90,200,250,0.8)';
+      for (let p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            ctx.strokeStyle = 'rgba(90,200,250,' + (1 - dist / 100) + ')';
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      for (let p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
+      }
+      requestAnimationFrame(draw);
+    }
+    window.addEventListener('resize', init);
+    init();
+    draw();
+  </script>
+</body>
+</html>

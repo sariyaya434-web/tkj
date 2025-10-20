@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desain Grafis - CyberClass TKJ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+    body {
+      background: radial-gradient(circle at top, #1e1b4b, #312e81);
+      color: #fff;
+      min-height: 100vh;
+      overflow-y: auto;
+    }
+    header { text-align:center; padding:2rem 1rem; }
+    header h1 { font-size:1.8rem; color:#a78bfa; font-weight:600; }
+    .tabs {
+      display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:1rem 0;
+    }
+    .tab {
+      background:#4c1d95; padding:10px 18px; border-radius:30px; cursor:pointer;
+      transition:0.3s; font-size:0.9rem;
+    }
+    .tab:hover, .tab.active { background:#7c3aed; }
+    .content { max-width:850px; margin:1rem auto; padding:1rem; }
+    .card {
+      background:rgba(255,255,255,0.1); padding:1.2rem; border-radius:15px;
+      box-shadow:0 0 15px rgba(0,0,0,0.3); margin-bottom:1.2rem;
+      animation:fadeIn 0.6s ease; backdrop-filter:blur(5px);
+    }
+    h3 { color:#a78bfa; margin-bottom:0.5rem; }
+    ul { padding-left:1.2rem; }
+    a.back {
+      display:inline-block; background:#6d28d9; padding:10px 20px;
+      border-radius:8px; color:#fff; text-decoration:none;
+      margin:2rem auto; text-align:center;
+    }
+    a.back:hover { background:#5b21b6; }
+    @keyframes fadeIn {
+      from { opacity:0; transform:translateY(10px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+    canvas#networkCanvas {
+      position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="networkCanvas"></canvas>
+
+  <header>
+    <h1>Desain Grafis</h1>
+  </header>
+
+  <div class="tabs">
+    <div class="tab active" data-target="pengertian">Pengertian</div>
+    <div class="tab" data-target="fungsi">Fungsi</div>
+    <div class="tab" data-target="elemen">Elemen & Prinsip</div>
+    <div class="tab" data-target="sejarah">Sejarah</div>
+    <div class="tab" data-target="penerapan">Penerapan</div>
+    <div class="tab" data-target="kesimpulan">Kesimpulan</div>
+  </div>
+
+  <div class="content">
+    <div id="pengertian" class="tab-content card" style="display:block;">
+      <h3>Pengertian Desain Grafis</h3>
+      <p>
+        Desain grafis merupakan proses komunikasi visual yang memanfaatkan elemen seperti teks, gambar, warna, dan bentuk untuk menyampaikan pesan secara efektif dan estetis. Dalam konteks Teknologi Komputer dan Jaringan (TKJ), desain grafis berperan penting dalam pembuatan antarmuka pengguna, poster edukatif, serta materi digital.
+      </p>
+      <p>
+        Seorang desainer grafis harus mampu menggabungkan kreativitas dan prinsip komunikasi agar pesan yang disampaikan mudah dipahami dan menarik perhatian audiens.
+      </p>
+    </div>
+
+    <div id="fungsi" class="tab-content card" style="display:none;">
+      <h3>Fungsi Desain Grafis</h3>
+      <ul>
+        <li>Meningkatkan daya tarik visual suatu produk, aplikasi, atau media informasi.</li>
+        <li>Menyampaikan pesan dan informasi dengan cara yang mudah diingat.</li>
+        <li>Membangun identitas visual, seperti logo dan branding institusi.</li>
+        <li>Mempermudah pemahaman pengguna melalui visualisasi yang jelas dan terarah.</li>
+        <li>Mendukung pembuatan konten digital untuk media sosial, promosi, dan pembelajaran.</li>
+      </ul>
+    </div>
+
+    <div id="elemen" class="tab-content card" style="display:none;">
+      <h3>Elemen dan Prinsip Desain Grafis</h3>
+      <p><b>Elemen Desain:</b></p>
+      <ul>
+        <li><b>Garis:</b> Menentukan arah dan membentuk struktur visual.</li>
+        <li><b>Bentuk:</b> Menciptakan identitas dari suatu objek atau komposisi.</li>
+        <li><b>Warna:</b> Memberikan suasana, emosi, dan penekanan pesan.</li>
+        <li><b>Tekstur:</b> Menambah kesan kedalaman atau realistis pada desain.</li>
+        <li><b>Ruang:</b> Menentukan keseimbangan dan keteraturan antar elemen.</li>
+      </ul>
+      <p><b>Prinsip Desain:</b></p>
+      <ul>
+        <li><b>Keseimbangan:</b> Distribusi visual yang proporsional antara elemen.</li>
+        <li><b>Kontras:</b> Menonjolkan perbedaan agar elemen penting terlihat jelas.</li>
+        <li><b>Kesatuan:</b> Semua elemen harus saling mendukung untuk tujuan yang sama.</li>
+        <li><b>Proporsi:</b> Perbandingan ukuran antar elemen agar visual harmonis.</li>
+        <li><b>Ritme:</b> Pola berulang yang menciptakan aliran visual.</li>
+      </ul>
+    </div>
+
+    <div id="sejarah" class="tab-content card" style="display:none;">
+      <h3>Sejarah Desain Grafis</h3>
+      <p>
+        Desain grafis telah ada sejak manusia pertama kali menggunakan simbol dan gambar sebagai alat komunikasi. Dalam era modern, perkembangan desain grafis dimulai sejak ditemukannya mesin cetak oleh Johannes Gutenberg pada abad ke-15, yang memungkinkan penyebaran informasi visual secara luas.
+      </p>
+      <p>
+        Memasuki abad ke-20, desain grafis berkembang pesat dengan munculnya teknologi komputer dan perangkat lunak seperti Adobe Illustrator, Photoshop, dan CorelDRAW. Kini, desain grafis menjadi bidang multidisiplin yang menggabungkan seni, psikologi, dan teknologi digital.
+      </p>
+    </div>
+
+    <div id="penerapan" class="tab-content card" style="display:none;">
+      <h3>Penerapan Desain Grafis dalam Dunia TKJ</h3>
+      <p>
+        Dalam jurusan TKJ, desain grafis digunakan untuk mendukung visualisasi sistem jaringan, pembuatan antarmuka aplikasi, serta media pembelajaran digital. Misalnya, dalam perancangan dashboard server, layout web edukasi, dan infografis topologi jaringan.
+      </p>
+      <p>
+        Kemampuan desain grafis juga penting untuk membuat presentasi profesional, laporan proyek, dan identitas visual seperti logo kelas atau organisasi.
+      </p>
+    </div>
+
+    <div id="kesimpulan" class="tab-content card" style="display:none;">
+      <h3>Kesimpulan</h3>
+      <p>
+        Desain grafis merupakan bagian penting dalam dunia teknologi modern, termasuk bidang jaringan komputer. Dengan menguasai prinsip dasar dan penerapannya, seseorang dapat menciptakan karya visual yang fungsional, informatif, dan estetis.
+      </p>
+    </div>
+
+    <div style="text-align:center;">
+      <a href="index.html" class="back">← Kembali ke Beranda</a>
+    </div>
+  </div>
+
+  <script>
+    // Tab control
+    const tabs = document.querySelectorAll(".tab");
+    const contents = document.querySelectorAll(".tab-content");
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        contents.forEach(c => c.style.display = "none");
+        document.getElementById(tab.dataset.target).style.display = "block";
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Network Animation
+    const canvas = document.getElementById("networkCanvas");
+    const ctx = canvas.getContext("2d");
+    let width, height, nodes;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      nodes = Array.from({ length: 40 }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: (Math.random() - 0.5) * 0.6
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        n.x += n.vx;
+        n.y += n.vy;
+        if (n.x < 0 || n.x > width) n.vx *= -1;
+        if (n.y < 0 || n.y > height) n.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = "#a78bfa";
+        ctx.fill();
+
+        for (let j = i + 1; j < nodes.length; j++) {
+          const m = nodes[j];
+          const dx = n.x - m.x;
+          const dy = n.y - m.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.strokeStyle = `rgba(167,139,250,${1 - dist / 120})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(n.x, n.y);
+            ctx.lineTo(m.x, m.y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener("resize", resize);
+    resize();
+    draw();
+  </script>
+</body>
+</html>

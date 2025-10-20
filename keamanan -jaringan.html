@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keamanan Jaringan - CyberClass TKJ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+    body {
+      background: radial-gradient(circle at top, #111827, #1e293b);
+      color:#f3f4f6;
+      min-height:100vh;
+      overflow-y:auto;
+    }
+    header { text-align:center; padding:2rem 1rem; }
+    header h1 { font-size:1.8rem; color:#f87171; font-weight:600; }
+    .tabs {
+      display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:1rem 0;
+    }
+    .tab {
+      background:#7f1d1d; padding:10px 18px; border-radius:30px;
+      cursor:pointer; transition:0.3s; font-size:0.9rem;
+    }
+    .tab:hover, .tab.active { background:#dc2626; }
+    .content { max-width:850px; margin:1rem auto; padding:1rem; }
+    .card {
+      background:rgba(255,255,255,0.08);
+      padding:1.2rem; border-radius:15px;
+      box-shadow:0 0 15px rgba(0,0,0,0.4);
+      margin-bottom:1.2rem;
+      animation:fadeIn 0.6s ease;
+      backdrop-filter:blur(5px);
+    }
+    h3 { color:#f87171; margin-bottom:0.5rem; }
+    ul { padding-left:1.2rem; }
+    a.back {
+      display:inline-block; background:#dc2626;
+      padding:10px 20px; border-radius:8px; color:#fff;
+      text-decoration:none; margin:2rem auto; text-align:center;
+    }
+    a.back:hover { background:#b91c1c; }
+    @keyframes fadeIn {
+      from{opacity:0;transform:translateY(10px);}
+      to{opacity:1;transform:translateY(0);}
+    }
+    canvas#networkCanvas {
+      position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="networkCanvas"></canvas>
+
+  <header>
+    <h1>Keamanan Jaringan</h1>
+  </header>
+
+  <div class="tabs">
+    <div class="tab active" data-target="pengertian">Pengertian</div>
+    <div class="tab" data-target="tujuan">Tujuan</div>
+    <div class="tab" data-target="ancaman">Jenis Ancaman</div>
+    <div class="tab" data-target="sistem">Sistem & Teknik Keamanan</div>
+    <div class="tab" data-target="penerapan">Penerapan</div>
+    <div class="tab" data-target="kesimpulan">Kesimpulan</div>
+  </div>
+
+  <div class="content">
+    <div id="pengertian" class="tab-content card" style="display:block;">
+      <h3>Pengertian Keamanan Jaringan</h3>
+      <p>
+        Keamanan jaringan adalah upaya perlindungan terhadap data dan sumber daya jaringan dari akses tidak sah, penyalahgunaan, perubahan, maupun penghancuran oleh pihak yang tidak berwenang.
+      </p>
+      <p>
+        Tujuan utama dari keamanan jaringan adalah menjaga <b>kerahasiaan (confidentiality)</b>, <b>integritas (integrity)</b>, dan <b>ketersediaan (availability)</b> informasi agar komunikasi data berlangsung aman dan andal.
+      </p>
+    </div>
+
+    <div id="tujuan" class="tab-content card" style="display:none;">
+      <h3>Tujuan Keamanan Jaringan</h3>
+      <ul>
+        <li>Melindungi data dan sistem dari akses ilegal atau peretasan.</li>
+        <li>Menjaga keaslian dan keutuhan informasi selama proses transmisi.</li>
+        <li>Menjamin layanan jaringan tetap tersedia bagi pengguna yang berhak.</li>
+        <li>Mencegah kerugian finansial dan reputasi akibat serangan siber.</li>
+        <li>Menjaga kepercayaan pengguna terhadap sistem jaringan yang digunakan.</li>
+      </ul>
+    </div>
+
+    <div id="ancaman" class="tab-content card" style="display:none;">
+      <h3>Jenis-Jenis Ancaman Jaringan</h3>
+      <ul>
+        <li><b>Malware:</b> Perangkat lunak berbahaya seperti virus, worm, dan trojan yang merusak sistem.</li>
+        <li><b>Phishing:</b> Upaya untuk mencuri data sensitif dengan menyamar sebagai pihak terpercaya.</li>
+        <li><b>DoS/DDoS:</b> Serangan yang membanjiri server agar tidak bisa diakses.</li>
+        <li><b>Man-in-the-Middle (MitM):</b> Penyusupan yang memantau atau mengubah komunikasi antar pihak.</li>
+        <li><b>Social Engineering:</b> Manipulasi psikologis untuk mendapatkan akses ilegal ke sistem.</li>
+      </ul>
+    </div>
+
+    <div id="sistem" class="tab-content card" style="display:none;">
+      <h3>Sistem dan Teknik Keamanan Jaringan</h3>
+      <ul>
+        <li><b>Firewall:</b> Sistem yang memantau dan mengontrol lalu lintas jaringan berdasarkan kebijakan keamanan.</li>
+        <li><b>Antivirus dan Antimalware:</b> Melindungi perangkat dari perangkat lunak berbahaya.</li>
+        <li><b>Enkripsi:</b> Teknik mengubah data menjadi bentuk tidak terbaca untuk menjaga kerahasiaannya.</li>
+        <li><b>VPN (Virtual Private Network):</b> Mengamankan komunikasi data dengan membuat jalur terenkripsi.</li>
+        <li><b>IDS/IPS (Intrusion Detection/Prevention System):</b> Mendeteksi dan mencegah upaya penyusupan.</li>
+        <li><b>Authentication dan Access Control:</b> Menentukan siapa yang boleh mengakses sumber daya tertentu.</li>
+      </ul>
+    </div>
+
+    <div id="penerapan" class="tab-content card" style="display:none;">
+      <h3>Penerapan Keamanan Jaringan di Dunia TKJ</h3>
+      <p>
+        Dalam pembelajaran TKJ, keamanan jaringan menjadi aspek penting dalam konfigurasi server, manajemen user, dan penerapan sistem keamanan. Siswa diajarkan untuk menggunakan firewall, mengenali ancaman siber, serta menerapkan protokol keamanan.
+      </p>
+      <p>
+        Di dunia industri, keamanan jaringan diterapkan dalam sistem data center, perkantoran, dan lembaga pemerintahan untuk melindungi data rahasia dan mencegah kebocoran informasi.
+      </p>
+    </div>
+
+    <div id="kesimpulan" class="tab-content card" style="display:none;">
+      <h3>Kesimpulan</h3>
+      <p>
+        Keamanan jaringan merupakan bagian krusial dalam dunia teknologi informasi. Dengan memahami berbagai ancaman dan teknik perlindungan, profesional TKJ mampu membangun jaringan yang kuat, aman, dan terpercaya.
+      </p>
+    </div>
+
+    <div style="text-align:center;">
+      <a href="index.html" class="back">← Kembali ke Beranda</a>
+    </div>
+  </div>
+
+  <script>
+    // Tab controller
+    const tabs = document.querySelectorAll(".tab");
+    const contents = document.querySelectorAll(".tab-content");
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        contents.forEach(c => c.style.display = "none");
+        document.getElementById(tab.dataset.target).style.display = "block";
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Background animation
+    const canvas = document.getElementById("networkCanvas");
+    const ctx = canvas.getContext("2d");
+    let width, height, nodes;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      nodes = Array.from({ length: 45 }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > width) n.vx *= -1;
+        if (n.y < 0 || n.y > height) n.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = "#f87171";
+        ctx.fill();
+
+        for (let j = i + 1; j < nodes.length; j++) {
+          const m = nodes[j];
+          const dx = n.x - m.x;
+          const dy = n.y - m.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.strokeStyle = `rgba(248,113,113,${1 - dist / 120})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(n.x, n.y);
+            ctx.lineTo(m.x, m.y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener("resize", resize);
+    resize();
+    draw();
+  </script>
+</body>
+</html>

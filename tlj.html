@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teknologi Layanan Jaringan (TLJ)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+    body {
+      background: radial-gradient(circle at top, #0f172a, #1e293b);
+      color: #fff;
+      min-height: 100vh;
+      overflow-y: auto;
+    }
+    header { text-align:center; padding:2rem 1rem; }
+    header h1 { font-size:1.8rem; color:#60a5fa; font-weight:600; }
+    .tabs {
+      display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:1rem 0;
+    }
+    .tab {
+      background:#1e40af; padding:10px 18px; border-radius:30px; cursor:pointer;
+      transition:0.3s; font-size:0.9rem;
+    }
+    .tab:hover, .tab.active { background:#3b82f6; }
+    .content { max-width:800px; margin:1rem auto; padding:1rem; }
+    .card {
+      background:rgba(255,255,255,0.1); padding:1.2rem; border-radius:15px;
+      box-shadow:0 0 15px rgba(0,0,0,0.3); margin-bottom:1.2rem;
+      animation:fadeIn 0.6s ease; backdrop-filter:blur(5px);
+    }
+    h3 { color:#60a5fa; margin-bottom:0.5rem; }
+    ul { padding-left:1.2rem; }
+    a.back {
+      display:inline-block; background:#2563eb; padding:10px 20px;
+      border-radius:8px; color:#fff; text-decoration:none;
+      margin:2rem auto; text-align:center;
+    }
+    a.back:hover { background:#1d4ed8; }
+    @keyframes fadeIn {
+      from { opacity:0; transform:translateY(10px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+    canvas#networkCanvas {
+      position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="networkCanvas"></canvas>
+
+  <header>
+    <h1>Teknologi Layanan Jaringan (TLJ)</h1>
+  </header>
+
+  <div class="tabs">
+    <div class="tab active" data-target="pengertian">Pengertian</div>
+    <div class="tab" data-target="fungsi">Fungsi</div>
+    <div class="tab" data-target="jenis">Jenis Layanan</div>
+    <div class="tab" data-target="penerapan">Penerapan</div>
+    <div class="tab" data-target="keamanan">Keamanan</div>
+    <div class="tab" data-target="kesimpulan">Kesimpulan</div>
+  </div>
+
+  <div class="content">
+    <div id="pengertian" class="tab-content card" style="display:block;">
+      <h3>Pengertian Teknologi Layanan Jaringan</h3>
+      <p>
+        Teknologi Layanan Jaringan (TLJ) adalah bidang ilmu yang mempelajari cara kerja dan pengelolaan berbagai layanan jaringan komputer yang digunakan untuk mendukung komunikasi dan pertukaran data antar perangkat dalam suatu sistem jaringan.
+      </p>
+      <p>
+        Layanan jaringan mencakup berbagai teknologi seperti web server, email server, DNS, FTP, dan layanan berbasis cloud yang memastikan jaringan dapat beroperasi secara efisien dan terintegrasi.
+      </p>
+    </div>
+
+    <div id="fungsi" class="tab-content card" style="display:none;">
+      <h3>Fungsi Teknologi Layanan Jaringan</h3>
+      <ul>
+        <li>Menjadi sarana komunikasi dan pertukaran data antar perangkat dan pengguna.</li>
+        <li>Menyediakan layanan seperti penyimpanan, pengelolaan, dan distribusi informasi.</li>
+        <li>Mempermudah kolaborasi antar pengguna melalui layanan berbasis jaringan.</li>
+        <li>Mendukung operasional sistem informasi pada perusahaan atau instansi.</li>
+        <li>Menyediakan akses ke sumber daya jaringan secara aman dan efisien.</li>
+      </ul>
+    </div>
+
+    <div id="jenis" class="tab-content card" style="display:none;">
+      <h3>Jenis-Jenis Layanan Jaringan</h3>
+      <ul>
+        <li><b>Web Server:</b> Menyediakan layanan akses halaman web melalui protokol HTTP/HTTPS.</li>
+        <li><b>DNS (Domain Name System):</b> Mengubah nama domain menjadi alamat IP agar mudah diakses.</li>
+        <li><b>FTP (File Transfer Protocol):</b> Layanan untuk mengunggah dan mengunduh file melalui jaringan.</li>
+        <li><b>Email Server:</b> Mengatur pengiriman dan penerimaan surat elektronik antar pengguna.</li>
+        <li><b>DHCP:</b> Memberikan alamat IP secara otomatis kepada perangkat yang terhubung ke jaringan.</li>
+        <li><b>Cloud Services:</b> Menyediakan layanan berbasis internet seperti penyimpanan dan aplikasi daring.</li>
+      </ul>
+    </div>
+
+    <div id="penerapan" class="tab-content card" style="display:none;">
+      <h3>Penerapan Teknologi Layanan Jaringan</h3>
+      <p>
+        TLJ banyak diterapkan dalam berbagai bidang, seperti pendidikan, bisnis, pemerintahan, dan industri. 
+        Contohnya, sekolah menggunakan layanan jaringan untuk sistem e-learning, sedangkan perusahaan memanfaatkan cloud computing untuk manajemen data dan kolaborasi tim.
+      </p>
+      <p>
+        Administrator jaringan harus mampu mengelola konfigurasi server, melakukan pemantauan, serta memastikan layanan berjalan tanpa gangguan dan aman dari serangan.
+      </p>
+    </div>
+
+    <div id="keamanan" class="tab-content card" style="display:none;">
+      <h3>Keamanan Layanan Jaringan</h3>
+      <p>
+        Dalam penerapan TLJ, keamanan menjadi aspek utama. Serangan siber dapat menyebabkan kebocoran data atau kerusakan sistem. 
+        Oleh karena itu, diperlukan penerapan firewall, enkripsi, VPN, serta sistem deteksi intrusi (IDS) untuk menjaga keamanan layanan jaringan.
+      </p>
+    </div>
+
+    <div id="kesimpulan" class="tab-content card" style="display:none;">
+      <h3>Kesimpulan</h3>
+      <p>
+        Teknologi Layanan Jaringan merupakan fondasi penting dalam sistem komunikasi modern. 
+        Dengan pengelolaan yang tepat, TLJ mampu mendukung produktivitas, efisiensi, dan keamanan jaringan dalam berbagai sektor kehidupan.
+      </p>
+    </div>
+
+    <div style="text-align:center;">
+      <a href="index.html" class="back">← Kembali ke Beranda</a>
+    </div>
+  </div>
+
+  <script>
+    // Tab Control
+    const tabs = document.querySelectorAll(".tab");
+    const contents = document.querySelectorAll(".tab-content");
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        contents.forEach(c => c.style.display = "none");
+        document.getElementById(tab.dataset.target).style.display = "block";
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Network Animation
+    const canvas = document.getElementById("networkCanvas");
+    const ctx = canvas.getContext("2d");
+    let width, height, nodes;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      nodes = Array.from({ length: 40 }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: (Math.random() - 0.5) * 0.6
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        n.x += n.vx;
+        n.y += n.vy;
+        if (n.x < 0 || n.x > width) n.vx *= -1;
+        if (n.y < 0 || n.y > height) n.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = "#60a5fa";
+        ctx.fill();
+
+        for (let j = i + 1; j < nodes.length; j++) {
+          const m = nodes[j];
+          const dx = n.x - m.x;
+          const dy = n.y - m.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.strokeStyle = `rgba(96,165,250,${1 - dist / 120})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(n.x, n.y);
+            ctx.lineTo(m.x, m.y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener("resize", resize);
+    resize();
+    draw();
+  </script>
+</body>
+</html>

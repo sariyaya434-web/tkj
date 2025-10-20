@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pengalamatan Jaringan - CyberClass TKJ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+    body {
+      background: radial-gradient(circle at top, #0f172a, #1e293b);
+      color:#f1f5f9;
+      min-height:100vh;
+      overflow-y:auto;
+    }
+    header { text-align:center; padding:2rem 1rem; }
+    header h1 { font-size:1.8rem; color:#38bdf8; font-weight:600; }
+    .tabs {
+      display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:1rem 0;
+    }
+    .tab {
+      background:#1e3a8a; padding:10px 18px; border-radius:30px;
+      cursor:pointer; transition:0.3s; font-size:0.9rem;
+    }
+    .tab:hover, .tab.active { background:#2563eb; }
+    .content { max-width:850px; margin:1rem auto; padding:1rem; }
+    .card {
+      background:rgba(255,255,255,0.08);
+      padding:1.2rem; border-radius:15px;
+      box-shadow:0 0 15px rgba(0,0,0,0.3);
+      margin-bottom:1.2rem;
+      animation:fadeIn 0.6s ease;
+      backdrop-filter:blur(5px);
+    }
+    h3 { color:#38bdf8; margin-bottom:0.5rem; }
+    ul { padding-left:1.2rem; }
+    a.back {
+      display:inline-block; background:#2563eb;
+      padding:10px 20px; border-radius:8px; color:#fff;
+      text-decoration:none; margin:2rem auto; text-align:center;
+    }
+    a.back:hover { background:#1e40af; }
+    @keyframes fadeIn {
+      from{opacity:0;transform:translateY(10px);}
+      to{opacity:1;transform:translateY(0);}
+    }
+    canvas#networkCanvas {
+      position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="networkCanvas"></canvas>
+
+  <header>
+    <h1>Pengalamatan Jaringan</h1>
+  </header>
+
+  <div class="tabs">
+    <div class="tab active" data-target="pengertian">Pengertian</div>
+    <div class="tab" data-target="fungsi">Fungsi</div>
+    <div class="tab" data-target="jenis">Jenis IP Address</div>
+    <div class="tab" data-target="struktur">Struktur & Subnetting</div>
+    <div class="tab" data-target="penerapan">Penerapan</div>
+    <div class="tab" data-target="kesimpulan">Kesimpulan</div>
+  </div>
+
+  <div class="content">
+    <div id="pengertian" class="tab-content card" style="display:block;">
+      <h3>Pengertian Pengalamatan Jaringan</h3>
+      <p>
+        Pengalamatan jaringan adalah sistem penomoran unik yang digunakan untuk mengidentifikasi perangkat dalam suatu jaringan komputer. Setiap perangkat, seperti komputer, router, atau server, memiliki alamat jaringan tersendiri yang memungkinkan pengiriman dan penerimaan data secara efisien.
+      </p>
+      <p>
+        Dalam konteks jaringan modern, pengalamatan menjadi fondasi utama bagi komunikasi antarperangkat, baik di jaringan lokal (LAN) maupun di jaringan global seperti Internet.
+      </p>
+    </div>
+
+    <div id="fungsi" class="tab-content card" style="display:none;">
+      <h3>Fungsi Pengalamatan Jaringan</h3>
+      <ul>
+        <li>Mengidentifikasi perangkat di dalam jaringan agar dapat saling berkomunikasi.</li>
+        <li>Menentukan jalur pengiriman data antar node jaringan.</li>
+        <li>Memudahkan pengelolaan jaringan seperti routing dan segmentasi.</li>
+        <li>Menjamin keamanan dan efisiensi dalam transfer informasi.</li>
+      </ul>
+    </div>
+
+    <div id="jenis" class="tab-content card" style="display:none;">
+      <h3>Jenis-Jenis IP Address</h3>
+      <p><b>1. IPv4 (Internet Protocol version 4)</b></p>
+      <p>
+        IPv4 merupakan versi alamat IP paling banyak digunakan, terdiri dari 32 bit dan ditulis dalam empat oktet (contoh: 192.168.1.1). IPv4 memiliki sekitar 4 miliar kombinasi alamat, namun kini mulai terbatas karena pertumbuhan jumlah perangkat.
+      </p>
+      <p><b>2. IPv6 (Internet Protocol version 6)</b></p>
+      <p>
+        IPv6 adalah versi terbaru dengan panjang 128 bit yang mampu menghasilkan lebih dari 3,4×10³⁸ kombinasi alamat. Format penulisannya menggunakan heksadesimal, misalnya <i>2001:0db8:85a3:0000:0000:8a2e:0370:7334</i>. IPv6 juga menyediakan keamanan dan efisiensi routing yang lebih baik.
+      </p>
+      <p><b>3. IP Publik dan IP Privat</b></p>
+      <ul>
+        <li><b>IP Publik:</b> Digunakan untuk mengidentifikasi perangkat yang terhubung langsung ke internet.</li>
+        <li><b>IP Privat:</b> Digunakan di dalam jaringan lokal (LAN) dan tidak dapat diakses langsung dari luar.</li>
+      </ul>
+    </div>
+
+    <div id="struktur" class="tab-content card" style="display:none;">
+      <h3>Struktur dan Subnetting</h3>
+      <p>
+        Struktur alamat IP dibagi menjadi dua bagian: <b>Network ID</b> dan <b>Host ID</b>. Network ID menunjukkan identitas jaringan, sedangkan Host ID menunjukkan perangkat di dalam jaringan tersebut.
+      </p>
+      <p>
+        <b>Subnetting</b> adalah teknik untuk membagi jaringan besar menjadi beberapa jaringan kecil (subnet) agar manajemen dan keamanan jaringan lebih mudah. Subnetting juga membantu mengoptimalkan penggunaan alamat IP.
+      </p>
+      <ul>
+        <li>Subnet mask menentukan bagian network dan host pada alamat IP.</li>
+        <li>Contoh: IP 192.168.1.0 dengan subnet mask 255.255.255.0 memiliki 256 alamat host.</li>
+        <li>Dalam subnetting, setiap subnet memiliki alamat jaringan dan broadcast tersendiri.</li>
+      </ul>
+    </div>
+
+    <div id="penerapan" class="tab-content card" style="display:none;">
+      <h3>Penerapan dalam Dunia TKJ</h3>
+      <p>
+        Pengalamatan jaringan digunakan dalam berbagai kegiatan teknis, seperti konfigurasi router, setting IP pada komputer, dan pembuatan topologi jaringan. Di dunia industri, kemampuan mengatur IP Address sangat penting untuk menjaga kestabilan dan keamanan jaringan.
+      </p>
+      <p>
+        Selain itu, dalam pembelajaran TKJ, pengalamatan menjadi dasar dalam materi konfigurasi server, subnetting, dan virtualisasi jaringan.
+      </p>
+    </div>
+
+    <div id="kesimpulan" class="tab-content card" style="display:none;">
+      <h3>Kesimpulan</h3>
+      <p>
+        Pengalamatan jaringan merupakan aspek fundamental dalam dunia jaringan komputer. Dengan memahami struktur, jenis, dan penerapannya, siswa TKJ dapat mengelola serta mengamankan jaringan dengan lebih profesional dan efisien.
+      </p>
+    </div>
+
+    <div style="text-align:center;">
+      <a href="index.html" class="back">← Kembali ke Beranda</a>
+    </div>
+  </div>
+
+  <script>
+    // Tab control
+    const tabs = document.querySelectorAll(".tab");
+    const contents = document.querySelectorAll(".tab-content");
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        contents.forEach(c => c.style.display = "none");
+        document.getElementById(tab.dataset.target).style.display = "block";
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Network animation
+    const canvas = document.getElementById("networkCanvas");
+    const ctx = canvas.getContext("2d");
+    let width, height, nodes;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      nodes = Array.from({ length: 45 }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > width) n.vx *= -1;
+        if (n.y < 0 || n.y > height) n.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = "#38bdf8";
+        ctx.fill();
+
+        for (let j = i + 1; j < nodes.length; j++) {
+          const m = nodes[j];
+          const dx = n.x - m.x;
+          const dy = n.y - m.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.strokeStyle = `rgba(56,189,248,${1 - dist / 120})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(n.x, n.y);
+            ctx.lineTo(m.x, m.y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener("resize", resize);
+    resize();
+    draw();
+  </script>
+</body>
+</html>
